@@ -1,4 +1,4 @@
-# charity_check
+# Charity Check
 
 A new Flutter project.
 
