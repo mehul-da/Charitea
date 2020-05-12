@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import './LoginScreen.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:mdi/mdi.dart';
 
 class OpeningScreen extends StatefulWidget {
   OpeningScreen({Key key, this.title}) : super(key: key);
@@ -22,7 +24,7 @@ class _OpeningScreenState extends State<OpeningScreen> {
         position: DecorationPosition.background,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/background.jpg'),
+            image: AssetImage('images/background3.png'),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
                 Colors.black.withOpacity(0.7), BlendMode.dstATop),
@@ -30,10 +32,12 @@ class _OpeningScreenState extends State<OpeningScreen> {
         ),
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              SizedBox(height: 130),
+              Icon(Mdi.tea, size: 125),
+              Text("chariTEA", style: GoogleFonts.pangolin(fontSize: 70, color: Colors.red, fontWeight: FontWeight.bold)),
               Padding(
-                  padding: const EdgeInsets.only(top: 400),
+                  padding: const EdgeInsets.only(top: 160),
                   child: RaisedButton(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(21)),
