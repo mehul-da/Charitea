@@ -9,8 +9,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,12 +16,60 @@ class _LoginScreenState extends State<LoginScreen> {
         position: DecorationPosition.background,
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('images/background.png'), fit: BoxFit.cover),
+              image: AssetImage('images/background.jpg'), fit: BoxFit.cover),
         ),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                        padding: const EdgeInsets.only(top: 70, bottom: 40),
+                        child: Text(
+                          "LET'S GET A FEW DETAILS!", style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                        ))
+                  ]),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                        width: 270,
+                        child: TextField(
+                          decoration: InputDecoration(
+                            hintText: "Name",
+                            border: OutlineInputBorder(),
+                            contentPadding: const EdgeInsets.all(16.0),
+                          ),
+                        ))
+                  ]),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                        width: 270,
+                        child: TextField(
+                          decoration: InputDecoration(
+                            hintText: "Name",
+                            border: OutlineInputBorder(),
+                            contentPadding: const EdgeInsets.all(16.0),
+                          ),
+                        ))
+                  ]),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                        width: 270,
+                        child: TextField(
+                          decoration: InputDecoration(
+                            hintText: "Name",
+                            border: OutlineInputBorder(),
+                            contentPadding: const EdgeInsets.all(16.0),
+                          ),
+                        ))
+                  ]),
               Padding(
                   padding: const EdgeInsets.only(top: 400),
                   child: RaisedButton(
@@ -32,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     padding: const EdgeInsets.only(
                         left: 30, right: 30, top: 15, bottom: 15),
                     onPressed: () => {},
-                    color: Colors.red,
+                    color: Colors.black,
                     textColor: Colors.white,
                     child: Text(
                       "I'M READY!",

@@ -10,9 +10,9 @@ class OpeningScreen extends StatefulWidget {
 }
 
 class _OpeningScreenState extends State<OpeningScreen> {
-  
   void goToNextScreen() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => LoginScreen()));
   }
 
   @override
@@ -22,7 +22,11 @@ class _OpeningScreenState extends State<OpeningScreen> {
         position: DecorationPosition.background,
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('images/background.png'), fit: BoxFit.cover),
+            image: AssetImage('images/background.jpg'),
+            fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(
+                Colors.black.withOpacity(1), BlendMode.dstATop),
+          ),
         ),
         child: Center(
           child: Column(
@@ -36,7 +40,7 @@ class _OpeningScreenState extends State<OpeningScreen> {
                     padding: const EdgeInsets.only(
                         left: 30, right: 30, top: 15, bottom: 15),
                     onPressed: goToNextScreen,
-                    color: Colors.red,
+                    color: Colors.black,
                     textColor: Colors.white,
                     child: Text(
                       "LET'S GET STARTED!",
