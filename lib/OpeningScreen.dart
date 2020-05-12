@@ -22,10 +22,10 @@ class _OpeningScreenState extends State<OpeningScreen> {
         position: DecorationPosition.background,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/background.jpg'),
+            image: AssetImage('images/back.png'),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
-                Colors.black.withOpacity(1), BlendMode.dstATop),
+                Colors.black.withOpacity(0.8), BlendMode.dstATop),
           ),
         ),
         child: Center(
@@ -40,10 +40,10 @@ class _OpeningScreenState extends State<OpeningScreen> {
                     padding: const EdgeInsets.only(
                         left: 30, right: 30, top: 15, bottom: 15),
                     onPressed: goToNextScreen,
-                    color: Colors.black,
+                    color: Colors.red,
                     textColor: Colors.white,
                     child: Text(
-                      "LET'S GET STARTED!",
+                      "let's get started!",
                       style: TextStyle(fontSize: 20),
                     ),
                   ))

@@ -12,11 +12,17 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: DecoratedBox(
+      resizeToAvoidBottomPadding: false,
+      body: SingleChildScrollView(
+          child: DecoratedBox(
         position: DecorationPosition.background,
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('images/background.jpg'), fit: BoxFit.cover),
+            image: AssetImage('images/back.png'),
+            fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(
+                Colors.black.withOpacity(0.8), BlendMode.dstATop),
+          ),
         ),
         child: Center(
           child: Column(
@@ -28,7 +34,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     Padding(
                         padding: const EdgeInsets.only(top: 70, bottom: 40),
                         child: Text(
-                          "LET'S GET A FEW DETAILS!", style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                          "LET'S GET A FEW DETAILS!",
+                          style: TextStyle(
+                              fontSize: 28, fontWeight: FontWeight.bold),
                         ))
                   ]),
               Row(
@@ -88,7 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ],
           ),
         ),
-      ),
+      )),
     );
   }
 }
