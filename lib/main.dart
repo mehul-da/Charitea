@@ -70,14 +70,21 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Padding(padding: const EdgeInsets.only(top: 400), child: RaisedButton(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(22)),
-                padding: const EdgeInsets.only(left: 60, right: 60, top: 10, bottom: 10),
-                onPressed: _incrementCounter,
-                color: Colors.red,
-                textColor: Colors.white,
-                child: Text("EXPLORE!", style: TextStyle(fontSize: 20),),
-              ))
+              Padding(
+                  padding: const EdgeInsets.only(top: 400),
+                  child: RaisedButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(22)),
+                    padding: const EdgeInsets.only(
+                        left: 60, right: 60, top: 10, bottom: 10),
+                    onPressed: _incrementCounter,
+                    color: Colors.red,
+                    textColor: Colors.white,
+                    child: Text(
+                      "EXPLORE!",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ))
             ],
           ),
         ),
