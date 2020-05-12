@@ -12,94 +12,74 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
-      body: SingleChildScrollView(
+        resizeToAvoidBottomPadding: false,
+        body: SingleChildScrollView(
           child: DecoratedBox(
-        position: DecorationPosition.background,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('images/background.jpg'),
-            fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(
-                Colors.black.withOpacity(0.7), BlendMode.dstATop),
-          ),
-        ),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              SizedBox(height:80),
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Padding(
-                        padding: const EdgeInsets.only(top: 50, bottom: 40),
+            position: DecorationPosition.background,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('images/background2.jpg'),
+                fit: BoxFit.cover,
+                colorFilter: ColorFilter.mode(
+                    Colors.black.withOpacity(0.7), BlendMode.dstATop),
+              ),
+            ),
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  SizedBox(height: 70),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Padding(
+                            padding: const EdgeInsets.only(top: 10, bottom: 40),
+                            child: Text(
+                              "Enter your phone number!",
+                              style: TextStyle(
+                                  fontSize: 27,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ))
+                      ]),
+                  SizedBox(height: 15),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                            width: 320,
+                            child: TextField(
+                              keyboardType: TextInputType.number,
+                              decoration: InputDecoration(
+                                  hintText: "Phone number",
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(15)),
+                                  focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(15)),
+                                  contentPadding: const EdgeInsets.all(16.0),
+                                  prefixIcon: Icon(Icons.phone, color: Colors.black)),
+                                  
+                            ))
+                      ]),
+                  Padding(
+                      padding: const EdgeInsets.only(top: 300, bottom: 200),
+                      child: RaisedButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(21)),
+                        padding: const EdgeInsets.only(
+                            left: 30, right: 30, top: 20, bottom: 20),
+                        onPressed: () => {},
+                        color: Colors.red,
+                        textColor: Colors.white,
                         child: Text(
-                          "let's start off with a few details!",
-                          style: TextStyle(
-                              fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
-                        ))
-                  ]),
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                        width: 270,
-                        child: TextField(
-                          decoration: InputDecoration(
-                            hintText: "Name",
-                            border: OutlineInputBorder(),
-                            contentPadding: const EdgeInsets.all(16.0),
-                          ),
-                        ))
-                  ]),
-              SizedBox(height:30),
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                        width: 270,
-                        child: TextField(
-                          decoration: InputDecoration(
-                            hintText: "Name",
-                            border: OutlineInputBorder(),
-                            contentPadding: const EdgeInsets.all(16.0),
-                          ),
-                        ))
-                  ]),
-              SizedBox(height: 30),
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                        width: 270,
-                        child: TextField(
-                          decoration: InputDecoration(
-                            hintText: "Name",
-                            border: OutlineInputBorder(),
-                            contentPadding: const EdgeInsets.all(16.0),
-                          ),
-                        ))
-                  ]),
-              Padding(
-                  padding: const EdgeInsets.only(top: 400),
-                  child: RaisedButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25)),
-                    padding: const EdgeInsets.only(
-                        left: 30, right: 30, top: 15, bottom: 15),
-                    onPressed: () => {},
-                    color: Colors.black,
-                    textColor: Colors.white,
-                    child: Text(
-                      "I'M READY!",
-                      style: TextStyle(fontSize: 20),
-                    ),
-                  ))
-            ],
+                          "continue",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ))
+                ],
+              ),
+            ),
           ),
-        ),
-      )),
-    );
+        ));
   }
 }

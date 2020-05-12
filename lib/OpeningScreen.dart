@@ -43,7 +43,7 @@ class _OpeningScreenState extends State<OpeningScreen> {
                     color: Colors.red,
                     textColor: Colors.white,
                     child: Text(
-                      "let's get started!",
+                      "Let's get started!",
                       style: TextStyle(fontSize: 20),
                     ),
                   ))
