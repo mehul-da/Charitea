@@ -1,4 +1,4 @@
-# Charity Check
+# Charitea
 
 A new Flutter project.
 
