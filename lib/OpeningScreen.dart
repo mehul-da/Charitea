@@ -24,27 +24,27 @@ class _OpeningScreenState extends State<OpeningScreen> {
         position: DecorationPosition.background,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/background3.png'),
+            image: AssetImage('images/background3.jpg'),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
-                Colors.black.withOpacity(0.7), BlendMode.dstATop),
+                Colors.black.withOpacity(1), BlendMode.dstATop),
           ),
         ),
         child: Center(
           child: Column(
             children: <Widget>[
-              SizedBox(height: 130),
-              Icon(Mdi.tea, size: 125),
-              Text("chariTEA", style: GoogleFonts.pangolin(fontSize: 70, color: Colors.red, fontWeight: FontWeight.bold)),
+              SizedBox(height: 60),
+              Icon(Mdi.handHeart, size: 125),
+              Text("charitea", style: GoogleFonts.pangolin(fontSize: 70, fontWeight: FontWeight.bold,color: Color(0xFF2eb092))),
               Padding(
-                  padding: const EdgeInsets.only(top: 160),
+                  padding: const EdgeInsets.only(top: 235),
                   child: RaisedButton(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(21)),
                     padding: const EdgeInsets.only(
                         left: 30, right: 30, top: 20, bottom: 20),
                     onPressed: goToNextScreen,
-                    color: Colors.red,
+                    color: Color(0xFF2eb092),
                     textColor: Colors.white,
                     child: Text(
                       "Let's get started!",
