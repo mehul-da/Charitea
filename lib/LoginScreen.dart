@@ -18,25 +18,26 @@ class _LoginScreenState extends State<LoginScreen> {
         position: DecorationPosition.background,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/back.png'),
+            image: AssetImage('images/background.jpg'),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
-                Colors.black.withOpacity(0.8), BlendMode.dstATop),
+                Colors.black.withOpacity(0.7), BlendMode.dstATop),
           ),
         ),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              SizedBox(height:80),
               Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Padding(
-                        padding: const EdgeInsets.only(top: 70, bottom: 40),
+                        padding: const EdgeInsets.only(top: 50, bottom: 40),
                         child: Text(
-                          "LET'S GET A FEW DETAILS!",
+                          "let's start off with a few details!",
                           style: TextStyle(
-                              fontSize: 28, fontWeight: FontWeight.bold),
+                              fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
                         ))
                   ]),
               Row(
@@ -52,6 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ))
                   ]),
+              SizedBox(height:30),
               Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -65,6 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ))
                   ]),
+              SizedBox(height: 30),
               Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[

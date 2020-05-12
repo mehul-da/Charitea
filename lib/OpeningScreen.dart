@@ -22,10 +22,10 @@ class _OpeningScreenState extends State<OpeningScreen> {
         position: DecorationPosition.background,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/back.png'),
+            image: AssetImage('images/background.jpg'),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
-                Colors.black.withOpacity(0.8), BlendMode.dstATop),
+                Colors.black.withOpacity(0.7), BlendMode.dstATop),
           ),
         ),
         child: Center(
@@ -36,9 +36,9 @@ class _OpeningScreenState extends State<OpeningScreen> {
                   padding: const EdgeInsets.only(top: 400),
                   child: RaisedButton(
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25)),
+                        borderRadius: BorderRadius.circular(21)),
                     padding: const EdgeInsets.only(
-                        left: 30, right: 30, top: 15, bottom: 15),
+                        left: 30, right: 30, top: 20, bottom: 20),
                     onPressed: goToNextScreen,
                     color: Colors.red,
                     textColor: Colors.white,
