@@ -18,7 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
             position: DecorationPosition.background,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('images/background2.jpg'),
+                image: AssetImage('images/background2.png'),
                 fit: BoxFit.cover,
                 colorFilter: ColorFilter.mode(
                     Colors.black.withOpacity(0.7), BlendMode.dstATop),
@@ -28,18 +28,18 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  SizedBox(height: 70),
+                  SizedBox(height: 180),
                   Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Padding(
                             padding: const EdgeInsets.only(top: 10, bottom: 40),
                             child: Text(
-                              "Enter your phone number!",
+                              "Enter your phone number.",
                               style: TextStyle(
                                   fontSize: 27,
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.white),
+                                  color: Colors.black),
                             ))
                       ]),
                   SizedBox(height: 15),
@@ -49,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Container(
                             width: 320,
                             child: TextField(
-                              keyboardType: TextInputType.number,
+                              keyboardType: TextInputType.phone,
                               decoration: InputDecoration(
                                   hintText: "Phone number",
                                   border: OutlineInputBorder(
@@ -62,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ))
                       ]),
                   Padding(
-                      padding: const EdgeInsets.only(top: 300, bottom: 200),
+                      padding: const EdgeInsets.only(top: 190, bottom: 200),
                       child: RaisedButton(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(21)),
@@ -72,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: Colors.red,
                         textColor: Colors.white,
                         child: Text(
-                          "continue",
+                          "Continue",
                           style: TextStyle(fontSize: 20),
                         ),
                       ))
