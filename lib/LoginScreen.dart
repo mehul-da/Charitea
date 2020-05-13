@@ -32,14 +32,14 @@ class _LoginScreenState extends State<LoginScreen> {
     "We will be sending you a code to verify your phone.",
     textAlign: TextAlign.center,
     style: GoogleFonts.nanumGothic(
-        fontSize: 18, color: Colors.black),
+        fontSize: 19, color: Colors.black),
   );
 
   final mainTitle = Center(
       child: Text(
     "ENTER YOUR PHONE NUMBER",
     style: GoogleFonts.nanumGothic(
-        fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black),
+        fontSize: 23, fontWeight: FontWeight.bold, color: Colors.black),
   ));
 
   var textEditingController = TextEditingController();
@@ -83,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15)),
                           contentPadding: const EdgeInsets.all(16.0),
-                          prefixIcon: Icon(Mdi.numeric, color: Colors.black))),
+                          prefixIcon: Icon(Mdi.cellphone, color: Colors.black, size: 20))),
                   SizedBox(height: 30),
                   RaisedButton(
                     shape: RoundedRectangleBorder(
