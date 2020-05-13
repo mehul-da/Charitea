@@ -25,22 +25,37 @@ class _LoginScreenState extends State<LoginScreen> {
                   Colors.black.withOpacity(0.7), BlendMode.dstATop),
             ),
           ),
-          child: Column(
+          child: Center(child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height: 60),
+              SizedBox(height: 80),
               Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      "LOGIN",
+                      "ENTER YOUR PHONE NUMBER",
                       style: GoogleFonts.nanumGothic(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                           color: Colors.black),
                     )
                   ]),
-              SizedBox(height: 25),
+              Padding(
+                  padding: EdgeInsets.only(left: 50, right: 50, top: 30, bottom: 30),
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Expanded(
+                            child: Text(
+                          "We will be sending you a code to verify your phone. Standard rates may apply.",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.nanumGothic(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black),
+                        ))
+                      ])),
+              SizedBox(height: 8),
               Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -59,37 +74,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                   Icon(Icons.phone, color: Colors.black)),
                         ))
                   ]),
-              SizedBox(height: 25),
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      "-OR-",
-                      style: GoogleFonts.nanumGothic(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    )
-                  ]),
-              SizedBox(height: 25),
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      "CREATE AN ACCOUNT",
-                      style: GoogleFonts.nanumGothic(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    )
-                  ]),
               Padding(
-                  padding: const EdgeInsets.only(top: 190, bottom: 280),
+                  padding: const EdgeInsets.only(top: 90, bottom: 380),
                   child: RaisedButton(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(21)),
                     padding: const EdgeInsets.only(
-                        left: 20, right: 20, top: 20, bottom: 20),
+                        left: 30, right: 30, top: 20, bottom: 20),
                     onPressed: () => {},
                     color: Color(0xFF2eb092),
                     textColor: Colors.white,
@@ -99,7 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ))
             ],
-          ),
+          )),
         ),
       ),
     );
