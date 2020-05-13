@@ -12,10 +12,10 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final background = BoxDecoration(
     image: DecorationImage(
-      image: AssetImage('images/background2.png'),
+      image: AssetImage('images/background.jpg'),
       fit: BoxFit.cover,
       colorFilter:
-          ColorFilter.mode(Colors.black.withOpacity(0.8), BlendMode.dstATop),
+          ColorFilter.mode(Color.fromRGBO(0x2e, 0xb0, 0x92, 1.0).withOpacity(1), BlendMode.dstATop),
     ),
   );
 
@@ -36,7 +36,8 @@ class _LoginScreenState extends State<LoginScreen> {
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(21)),
     padding: const EdgeInsets.only(top: 20, bottom: 20),
     onPressed: () => {},
-    color: Color(0xFF2eb092),
+    color: Color.fromRGBO(0x2e, 0xb0, 0x92, 1.0),
+    // color: Color(0xFF2eb092),
     textColor: Colors.white,
     child: Text(
       "CONTINUE",
@@ -66,6 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Container(
             height: MediaQuery.of(context).size.height,
             alignment: Alignment.topCenter,
+            decoration: background,
             padding: EdgeInsets.all(25.0),
             child: Center(
               child: ListView(
