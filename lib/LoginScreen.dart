@@ -40,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
       ));
 
   final phoneMessage = Text(
-    "We will be sending you a code to verify your phone. Standard rates may apply.",
+    "We will be sending you a code to verify your phone.",
     textAlign: TextAlign.center,
     style: GoogleFonts.nanumGothic(
         fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
