@@ -47,7 +47,7 @@ class _OpeningScreenState extends State<OpeningScreen> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(21)),
                     padding: const EdgeInsets.only(
-                        left: 30, right: 30, top: 20, bottom: 20),
+                        left: 30, right: 30, top: 18, bottom: 18),
                     onPressed: goToNextScreen,
                     color: Color(0xFF2eb092),
                     textColor: Colors.white,

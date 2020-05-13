@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import './VerificationScreen.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:mdi/mdi.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key key, this.title}) : super(key: key);
@@ -26,37 +28,29 @@ class _LoginScreenState extends State<LoginScreen> {
     ),
   );
 
-  final phoneInput = Container(
-      width: 320,
-      child: TextField(
-        keyboardType: TextInputType.phone,
-        decoration: InputDecoration(
-            hintText: "Phone Number",
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
-            focusedBorder:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
-            contentPadding: const EdgeInsets.all(16.0),
-            prefixIcon: Icon(Icons.phone, color: Colors.black)),
-      ));
-
   final phoneMessage = Text(
     "We will be sending you a code to verify your phone.",
     textAlign: TextAlign.center,
     style: GoogleFonts.nanumGothic(
-        fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
+        fontSize: 18, color: Colors.black),
   );
 
   final mainTitle = Center(
       child: Text(
     "ENTER YOUR PHONE NUMBER",
     style: GoogleFonts.nanumGothic(
-        fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+        fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black),
   ));
+
+  var textEditingController = TextEditingController();
+  var maskTextInputFormatter = MaskTextInputFormatter(
+      mask: "(###) ###-####", filter: {"#": RegExp(r'[0-9]')});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomPadding: false,
+        resizeToAvoidBottomPadding: true,
+        resizeToAvoidBottomInset: true,
         body: SingleChildScrollView(
           child: Container(
             height: MediaQuery.of(context).size.height,
@@ -67,19 +61,35 @@ class _LoginScreenState extends State<LoginScreen> {
               child: ListView(
                 shrinkWrap: true,
                 children: <Widget>[
+                  Center(child: Icon(Mdi.phone, size: 100)),
+                  SizedBox(height: 20),
                   mainTitle,
-                  SizedBox(height: 14),
+                  SizedBox(height: 20),
                   phoneMessage,
                   SizedBox(height: 30),
-                  phoneInput,
+                  TextField(
+                      controller: textEditingController,
+                      inputFormatters: [maskTextInputFormatter],
+                      autocorrect: false,
+                      keyboardType: TextInputType.phone,
+                      decoration: InputDecoration(
+                          hintText: "Phone Number",
+                          hintStyle: GoogleFonts.nanumGothic(fontSize: 20),
+                          fillColor: Colors.white,
+                          filled: true,
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15)),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15)),
+                          contentPadding: const EdgeInsets.all(16.0),
+                          prefixIcon: Icon(Mdi.numeric, color: Colors.black))),
                   SizedBox(height: 30),
                   RaisedButton(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(21)),
-                    padding: const EdgeInsets.only(top: 20, bottom: 20),
+                    padding: const EdgeInsets.only(top: 17, bottom: 17, left: 30, right: 30),
                     onPressed: goToNextScreen,
-                    color: Color.fromRGBO(0x2e, 0xb0, 0x92, 1.0),
-                    // color: Color(0xFF2eb092),
+                    color: Color(0xFF2eb092),
                     textColor: Colors.white,
                     child: Text(
                       "CONTINUE",

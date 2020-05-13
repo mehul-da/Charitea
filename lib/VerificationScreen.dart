@@ -36,8 +36,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(21)),
     padding: const EdgeInsets.only(top: 20, bottom: 20),
     onPressed: () => {},
-    color: Color.fromRGBO(0x2e, 0xb0, 0x92, 1.0),
-    // color: Color(0xFF2eb092),
+    color: Color(0xFF2eb092),
     textColor: Colors.white,
     child: Text(
       "CONTINUE",
