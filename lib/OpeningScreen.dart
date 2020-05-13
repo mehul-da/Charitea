@@ -37,7 +37,7 @@ class _OpeningScreenState extends State<OpeningScreen> {
               Icon(Mdi.handHeart, size: 125),
               Text("charitea", style: GoogleFonts.pangolin(fontSize: 70, fontWeight: FontWeight.bold,color: Color(0xFF2eb092))),
               Padding(
-                  padding: const EdgeInsets.only(top: 215),
+                  padding: const EdgeInsets.only(top: 225),
                   child: RaisedButton(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(21)),
