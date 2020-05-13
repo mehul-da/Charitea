@@ -17,25 +17,30 @@ class _OpeningScreenState extends State<OpeningScreen> {
         context, MaterialPageRoute(builder: (context) => LoginScreen()));
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: DecoratedBox(
-        position: DecorationPosition.background,
-        decoration: BoxDecoration(
+  final background = BoxDecoration(
           image: DecorationImage(
             image: AssetImage('images/background3.jpg'),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
                 Colors.black.withOpacity(1), BlendMode.dstATop),
           ),
-        ),
+        );
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          alignment: Alignment.topCenter,
+          decoration: background,
+          padding: EdgeInsets.all(25.0),
         child: Center(
-          child: Column(
+          child: ListView(
             children: <Widget>[
-              SizedBox(height: 90),
-              Icon(Mdi.handHeart, size: 125),
-              Text("charitea", style: GoogleFonts.pangolin(fontSize: 70, fontWeight: FontWeight.bold,color: Color(0xFF2eb092))),
+              SizedBox(height: 50),
+              Center(child: Icon(Mdi.handHeart, size: 125)),
+              Center(child: Text("charitea", style: GoogleFonts.pangolin(fontSize: 70, fontWeight: FontWeight.bold,color: Color(0xFF2eb092)))),
               Padding(
                   padding: const EdgeInsets.only(top: 225),
                   child: RaisedButton(
@@ -55,6 +60,6 @@ class _OpeningScreenState extends State<OpeningScreen> {
           ),
         )
       ),
-    );
+    ));
   }
 }
