@@ -12,7 +12,7 @@ class VerificationScreen extends StatefulWidget {
 class _VerificationScreenState extends State<VerificationScreen> {
   final background = BoxDecoration(
     image: DecorationImage(
-      image: AssetImage('images/background.jpg'),
+      image: AssetImage('images/verificationScreen.jpg'),
       fit: BoxFit.cover,
       colorFilter:
           ColorFilter.mode(Color.fromRGBO(0x2e, 0xb0, 0x92, 1.0).withOpacity(1), BlendMode.dstATop),

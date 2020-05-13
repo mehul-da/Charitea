@@ -19,7 +19,7 @@ class _OpeningScreenState extends State<OpeningScreen> {
 
   final background = BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/background3.jpg'),
+            image: AssetImage('images/openingScreen.jpg'),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
                 Colors.black.withOpacity(1), BlendMode.dstATop),
