@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key key, this.title}) : super(key: key);
@@ -24,7 +25,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     Colors.black.withOpacity(0.7), BlendMode.dstATop),
               ),
             ),
-            child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -35,9 +35,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         Padding(
                             padding: const EdgeInsets.only(top: 10, bottom: 40),
                             child: Text(
-                              "Enter your phone number.",
-                              style: TextStyle(
-                                  fontSize: 27,
+                              "LOGIN",
+                              style: GoogleFonts.nanumGothic(
+                                  fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black),
                             ))
@@ -51,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: TextField(
                               keyboardType: TextInputType.phone,
                               decoration: InputDecoration(
-                                  hintText: "Phone number",
+                                  hintText: "Phone Number",
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(15)),
                                   focusedBorder: OutlineInputBorder(
@@ -69,17 +69,17 @@ class _LoginScreenState extends State<LoginScreen> {
                         padding: const EdgeInsets.only(
                             left: 30, right: 30, top: 20, bottom: 20),
                         onPressed: () => {},
-                        color: Colors.red,
+                        color: Color(0xFF2eb092),
                         textColor: Colors.white,
                         child: Text(
-                          "Continue",
-                          style: TextStyle(fontSize: 20),
+                          "CONTINUE",
+                          style: GoogleFonts.firaSans(fontSize: 20),
                         ),
                       ))
                 ],
               ),
             ),
           ),
-        ));
+        );
   }
 }

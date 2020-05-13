@@ -33,11 +33,11 @@ class _OpeningScreenState extends State<OpeningScreen> {
         child: Center(
           child: Column(
             children: <Widget>[
-              SizedBox(height: 60),
+              SizedBox(height: 90),
               Icon(Mdi.handHeart, size: 125),
               Text("charitea", style: GoogleFonts.pangolin(fontSize: 70, fontWeight: FontWeight.bold,color: Color(0xFF2eb092))),
               Padding(
-                  padding: const EdgeInsets.only(top: 235),
+                  padding: const EdgeInsets.only(top: 215),
                   child: RaisedButton(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(21)),
@@ -47,13 +47,13 @@ class _OpeningScreenState extends State<OpeningScreen> {
                     color: Color(0xFF2eb092),
                     textColor: Colors.white,
                     child: Text(
-                      "Let's get started!",
-                      style: TextStyle(fontSize: 20),
+                      "LET'S GET STARTED!",
+                      style: GoogleFonts.firaSans(fontSize: 20,),
                     ),
                   ))
             ],
           ),
-        ),
+        )
       ),
     );
   }
