@@ -68,13 +68,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   phoneMessage,
                   SizedBox(height: 30),
                   TextField(
+                      style: GoogleFonts.nanumGothic(fontSize: 20, fontWeight: FontWeight.bold),
                       controller: textEditingController,
                       inputFormatters: [maskTextInputFormatter],
                       autocorrect: false,
                       keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
                           hintText: "Phone Number",
-                          hintStyle: GoogleFonts.nanumGothic(fontSize: 20),
+                          hintStyle: GoogleFonts.nanumGothic(fontSize: 20, fontWeight: FontWeight.bold),
                           fillColor: Colors.white,
                           filled: true,
                           border: OutlineInputBorder(
