@@ -1,28 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import './VerificationScreen.dart';
 
-class LoginScreen extends StatefulWidget {
-  LoginScreen({Key key, this.title}) : super(key: key);
+class VerificationScreen extends StatefulWidget {
+  VerificationScreen({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _VerificationScreenState createState() => _VerificationScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  void goToNextScreen() {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => VerificationScreen()));
-  }
-
+class _VerificationScreenState extends State<VerificationScreen> {
   final background = BoxDecoration(
     image: DecorationImage(
       image: AssetImage('images/background.jpg'),
       fit: BoxFit.cover,
-      colorFilter: ColorFilter.mode(
-          Color.fromRGBO(0x2e, 0xb0, 0x92, 1.0).withOpacity(1),
-          BlendMode.dstATop),
+      colorFilter:
+          ColorFilter.mode(Color.fromRGBO(0x2e, 0xb0, 0x92, 1.0).withOpacity(1), BlendMode.dstATop),
     ),
   );
 
@@ -39,6 +32,19 @@ class _LoginScreenState extends State<LoginScreen> {
             prefixIcon: Icon(Icons.phone, color: Colors.black)),
       ));
 
+  final continueButton = RaisedButton(
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(21)),
+    padding: const EdgeInsets.only(top: 20, bottom: 20),
+    onPressed: () => {},
+    color: Color.fromRGBO(0x2e, 0xb0, 0x92, 1.0),
+    // color: Color(0xFF2eb092),
+    textColor: Colors.white,
+    child: Text(
+      "CONTINUE",
+      style: GoogleFonts.firaSans(fontSize: 20),
+    ),
+  );
+
   final phoneMessage = Text(
     "We will be sending you a code to verify your phone. Standard rates may apply.",
     textAlign: TextAlign.center,
@@ -48,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final mainTitle = Center(
       child: Text(
-    "ENTER YOUR PHONE NUMBER",
+    "ENTER VERIFICATION CODE",
     style: GoogleFonts.nanumGothic(
         fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
   ));
@@ -73,19 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: 30),
                   phoneInput,
                   SizedBox(height: 30),
-                  RaisedButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(21)),
-                    padding: const EdgeInsets.only(top: 20, bottom: 20),
-                    onPressed: goToNextScreen,
-                    color: Color.fromRGBO(0x2e, 0xb0, 0x92, 1.0),
-                    // color: Color(0xFF2eb092),
-                    textColor: Colors.white,
-                    child: Text(
-                      "CONTINUE",
-                      style: GoogleFonts.firaSans(fontSize: 20),
-                    ),
-                  ),
+                  continueButton,
                 ],
               ),
             ),
