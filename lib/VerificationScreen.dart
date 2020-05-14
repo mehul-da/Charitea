@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mdi/mdi.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class VerificationScreen extends StatefulWidget {
   VerificationScreen({Key key, this.title}) : super(key: key);
@@ -11,20 +12,26 @@ class VerificationScreen extends StatefulWidget {
 }
 
 class _VerificationScreenState extends State<VerificationScreen> {
-  bool enabled = false;
-  var buttonColor = Color(0xFFD3D3D3);
+  var enabled = false;
+  var buttonColor = Color(0xFF8D8D8D);
+  var textColor = Colors.black;
   var textEditingController = TextEditingController();
+  var maskTextInputFormatter = MaskTextInputFormatter(
+      mask: "######", filter: {"#": RegExp(r'[0-9]')});
+
 
   void onCodeChange(String text) {
     if (text.length >= 6) {
       setState(() {
         enabled = true;
         buttonColor = Color(0xFF2eb092);
+        textColor = Colors.white;
       });
     } else {
       setState(() {
         enabled = false;
-        buttonColor = Color(0xFFD3D3D3);
+        buttonColor = Color(0xFF8D8D8D);
+        textColor = Colors.black;
       });
     }
   }
@@ -33,34 +40,6 @@ class _VerificationScreenState extends State<VerificationScreen> {
     image: DecorationImage(
       image: AssetImage('images/verificationScreen.jpg'),
       fit: BoxFit.cover,
-      colorFilter: ColorFilter.mode(
-          Color.fromRGBO(0x2e, 0xb0, 0x92, 1.0).withOpacity(1),
-          BlendMode.dstATop),
-    ),
-  );
-
-  final phoneInput = Container(
-      width: 320,
-      child: TextField(
-        keyboardType: TextInputType.phone,
-        decoration: InputDecoration(
-            hintText: "Phone Number",
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
-            focusedBorder:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
-            contentPadding: const EdgeInsets.all(16.0),
-            prefixIcon: Icon(Icons.phone, color: Colors.black)),
-      ));
-
-  final continueButton = RaisedButton(
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(21)),
-    padding: const EdgeInsets.only(top: 20, bottom: 20),
-    onPressed: () => {},
-    color: Color(0xFF2eb092),
-    textColor: Colors.white,
-    child: Text(
-      "CONTINUE",
-      style: GoogleFonts.firaSans(fontSize: 20),
     ),
   );
 
@@ -105,6 +84,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                       maxLength: 6,
                       onChanged: (text) => onCodeChange(text),
                       controller: textEditingController,
+                      inputFormatters: [maskTextInputFormatter],
                       keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
                           counterText: "",
@@ -131,10 +111,9 @@ class _VerificationScreenState extends State<VerificationScreen> {
                             top: 17, bottom: 17, left: 30, right: 30),
                         onPressed: () => {},
                         color: buttonColor,
-                        textColor: Colors.white,
                         child: Text(
                           "CONTINUE",
-                          style: GoogleFonts.firaSans(fontSize: 20),
+                          style: GoogleFonts.firaSans(fontSize: 20, color: textColor),
                         ),
                       )),
                 ],

@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import './VerificationScreen.dart';
@@ -14,16 +13,14 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  bool enabled = false;
-  var buttonColor = Color(0xFFD3D3D3);
+  var enabled = false;
+  var buttonColor = Color(0xFF8D8D8D);
+  var textColor = Colors.black;
 
   final background = BoxDecoration(
     image: DecorationImage(
       image: AssetImage('images/loginScreen.jpg'),
       fit: BoxFit.cover,
-      colorFilter: ColorFilter.mode(
-          Color.fromRGBO(0x2e, 0xb0, 0x92, 1.0).withOpacity(1),
-          BlendMode.dstATop),
     ),
   );
 
@@ -49,11 +46,13 @@ class _LoginScreenState extends State<LoginScreen> {
       setState(() {
         enabled = true;
         buttonColor = Color(0xFF2eb092);
+        textColor = Colors.white;
       });
     } else {
       setState(() {
         enabled = false;
-        buttonColor = Color(0xFFD3D3D3);
+        buttonColor = Color(0xFF8D8D8D);
+        textColor = Colors.black;
       });
     }
   }
@@ -123,10 +122,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             top: 17, bottom: 17, left: 30, right: 30),
                         onPressed: goToNextScreen,
                         color: buttonColor,
-                        textColor: Colors.white,
                         child: Text(
                           "CONTINUE",
-                          style: GoogleFonts.firaSans(fontSize: 20),
+                          style: GoogleFonts.firaSans(fontSize: 20, color: textColor),
                         ),
                       )),
                 ],
@@ -136,9 +134,9 @@ class _LoginScreenState extends State<LoginScreen> {
         ));
   }
 
-  Future<void> verifyPhone(phoneNum) async {
-    // await FirebaseAuth.instance.verifyPhoneNumber(
-    //   phoneNumber: phoneNum,
-    // );
-  }
+  // Future<void> verifyPhone(phoneNum) async {
+  //   // await FirebaseAuth.instance.verifyPhoneNumber(
+  //   //   phoneNumber: phoneNum,
+  //   // );
+  // }
 }
