@@ -3,14 +3,19 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mdi/mdi.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import './MainDashboardScreen.dart';
 
 class VerificationScreen extends StatefulWidget {
-  VerificationScreen({Key key, this.title, @required this.phoneNum}) : super(key: key);
+  VerificationScreen(
+      {Key key, this.title, @required this.phoneNum, @required this.verId})
+      : super(key: key);
   final String title;
   final String phoneNum;
+  final String verId;
 
   @override
-  _VerificationScreenState createState() => _VerificationScreenState();
+  _VerificationScreenState createState() =>
+      _VerificationScreenState(phoneNum, verId);
 }
 
 class _VerificationScreenState extends State<VerificationScreen> {
@@ -21,6 +26,32 @@ class _VerificationScreenState extends State<VerificationScreen> {
   var maskTextInputFormatter =
       MaskTextInputFormatter(mask: "######", filter: {"#": RegExp(r'[0-9]')});
   String code;
+  String phoneNum;
+  String verificationId;
+
+  _VerificationScreenState(String phoneNum, String verificationId) {
+    this.phoneNum = phoneNum;
+    this.verificationId = verificationId;
+  }
+
+  signInUser() async {
+    this.code = textEditingController.text;
+    final AuthCredential credential = PhoneAuthProvider.getCredential(
+      verificationId: this.verificationId,
+      smsCode: this.code,
+    );
+
+    FirebaseAuth _auth = FirebaseAuth.instance;
+    await _auth.signInWithCredential(credential).then((user) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => MainDashboardScreen(userUID: user.user.uid)),
+      );
+    }).catchError((e) {
+      print(e);
+    });
+  }
 
   void onCodeChange(String text) {
     if (text.length >= 6) {
@@ -60,6 +91,13 @@ class _VerificationScreenState extends State<VerificationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var goToNextScreen;
+    if (enabled) {
+      goToNextScreen = () {
+        this.signInUser();
+      };
+    }
+
     return Scaffold(
         resizeToAvoidBottomPadding: false,
         resizeToAvoidBottomInset: false,
@@ -111,7 +149,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                             borderRadius: BorderRadius.circular(21)),
                         padding: const EdgeInsets.only(
                             top: 17, bottom: 17, left: 30, right: 30),
-                        onPressed: () => {},
+                        onPressed: goToNextScreen,
                         color: buttonColor,
                         child: Text(
                           "CONTINUE",

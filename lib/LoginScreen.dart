@@ -23,15 +23,23 @@ class _LoginScreenState extends State<LoginScreen> {
 
   autoRetrieve(String verId) {
     this.verificationId = verId;
+    print("auto-retrieve");
   }
 
   codeTextSent(String verId, List<int> code) {
     this.verificationId = verId;
+    Navigator.push(context,
+            MaterialPageRoute(builder: (context) => VerificationScreen(phoneNum: this.phoneNumber, verId: this.verificationId)));
+    print("code text sent");
   }
 
-  verificationComplete(AuthCredential authCredential) {}
+  verificationComplete(AuthCredential authCredential) {
+    print('verification complete');
+  }
 
-  verificationFail(AuthException authException) {}
+  verificationFail(AuthException authException) {
+    print('verification failed');
+  }
 
   Future<void> verifyPhone(phoneNum) async {
     await FirebaseAuth.instance.verifyPhoneNumber(
@@ -93,8 +101,6 @@ class _LoginScreenState extends State<LoginScreen> {
     if (enabled) {
       goToNextScreen = () {
         this.verifyPhone(this.phoneNumber);
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => VerificationScreen(phoneNum: this.phoneNumber)));
       };
     }
 
