@@ -67,8 +67,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
   final phoneMessage = Text(
     "We just sent a code to the number provided. Please enter it here.",
     textAlign: TextAlign.center,
-    style: GoogleFonts.nanumGothic(
-        fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
+    style: GoogleFonts.nanumGothic(fontSize: 18, color: Colors.black),
   );
 
   final mainTitle = Center(
