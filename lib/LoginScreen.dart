@@ -31,8 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final phoneMessage = Text(
     "We will be sending you a code to verify your phone.",
     textAlign: TextAlign.center,
-    style: GoogleFonts.nanumGothic(
-        fontSize: 19, color: Colors.black),
+    style: GoogleFonts.nanumGothic(fontSize: 19, color: Colors.black),
   );
 
   final mainTitle = Center(
@@ -68,14 +67,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   phoneMessage,
                   SizedBox(height: 30),
                   TextField(
-                      style: GoogleFonts.nanumGothic(fontSize: 20, fontWeight: FontWeight.bold),
+                      style: GoogleFonts.nanumGothic(
+                          fontSize: 20, fontWeight: FontWeight.bold),
                       controller: textEditingController,
                       inputFormatters: [maskTextInputFormatter],
                       autocorrect: false,
                       keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
                           hintText: "Phone Number",
-                          hintStyle: GoogleFonts.nanumGothic(fontSize: 20, fontWeight: FontWeight.bold),
+                          hintStyle: GoogleFonts.nanumGothic(
+                              fontSize: 20, fontWeight: FontWeight.bold),
                           fillColor: Colors.white,
                           filled: true,
                           border: OutlineInputBorder(
@@ -83,13 +84,18 @@ class _LoginScreenState extends State<LoginScreen> {
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15)),
                           contentPadding: const EdgeInsets.all(16.0),
-                          prefixIcon: Icon(Mdi.cellphone, color: Colors.black, size: 20))),
+                          prefixIcon: Icon(Mdi.cellphone,
+                              color: Colors.black, size: 20))),
                   SizedBox(height: 30),
                   RaisedButton(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(21)),
-                    padding: const EdgeInsets.only(top: 17, bottom: 17, left: 30, right: 30),
-                    onPressed: goToNextScreen,
+                    padding: const EdgeInsets.only(
+                        top: 17, bottom: 17, left: 30, right: 30),
+                    onPressed: () => {
+                      print(
+                          "${textEditingController.text.substring(1, 4)}${textEditingController.text.substring(6, 9)}${textEditingController.text.substring(10, 14)}")
+                    },
                     color: Color(0xFF2eb092),
                     textColor: Colors.white,
                     child: Text(
