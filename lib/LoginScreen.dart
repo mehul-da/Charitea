@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import './VerificationScreen.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:mdi/mdi.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key key, this.title}) : super(key: key);
@@ -16,6 +17,32 @@ class _LoginScreenState extends State<LoginScreen> {
   var enabled = false;
   var buttonColor = Color(0xFF8D8D8D);
   var textColor = Colors.black;
+  String verificationId;
+  String phoneNumber;
+
+
+  autoRetrieve(String verId) {
+    this.verificationId = verId;
+  }
+
+  codeTextSent(String verId, List<int> code) {
+    this.verificationId = verId;
+  }
+
+  verificationComplete(AuthCredential authCredential) {}
+
+  verificationFail(AuthException authException) {}
+
+  Future<void> verifyPhone(phoneNum) async {
+    await FirebaseAuth.instance.verifyPhoneNumber(
+        phoneNumber: phoneNum,
+        timeout: Duration(seconds: 15),
+        codeAutoRetrievalTimeout: (verId) => autoRetrieve(verId),
+        codeSent: (verId, [code]) => codeTextSent(verId, [code]),
+        verificationCompleted: (authCredential) =>
+            verificationComplete(authCredential),
+        verificationFailed: (authException) => verificationFail(authException));
+  }
 
   final background = BoxDecoration(
     image: DecorationImage(
@@ -47,12 +74,15 @@ class _LoginScreenState extends State<LoginScreen> {
         enabled = true;
         buttonColor = Color(0xFF2eb092);
         textColor = Colors.white;
+        phoneNumber =
+            "+1${textEditingController.text.substring(1, 4)}${textEditingController.text.substring(6, 9)}${textEditingController.text.substring(10, 14)}";
       });
     } else {
       setState(() {
         enabled = false;
         buttonColor = Color(0xFF8D8D8D);
         textColor = Colors.black;
+        phoneNumber = "";
       });
     }
   }
@@ -62,12 +92,11 @@ class _LoginScreenState extends State<LoginScreen> {
     var goToNextScreen;
     if (enabled) {
       goToNextScreen = () {
+        this.verifyPhone(this.phoneNumber);
         Navigator.push(context,
-            MaterialPageRoute(builder: (context) => VerificationScreen()));
+            MaterialPageRoute(builder: (context) => VerificationScreen(phoneNum: this.phoneNumber)));
       };
     }
-
-    // "${textEditingController.text.substring(1, 4)}${textEditingController.text.substring(6, 9)}${textEditingController.text.substring(10, 14)}"
 
     return Scaffold(
         resizeToAvoidBottomPadding: false,
@@ -124,7 +153,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: buttonColor,
                         child: Text(
                           "CONTINUE",
-                          style: GoogleFonts.firaSans(fontSize: 20, color: textColor),
+                          style: GoogleFonts.firaSans(
+                              fontSize: 20, color: textColor),
                         ),
                       )),
                 ],
@@ -133,10 +163,4 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ));
   }
-
-  // Future<void> verifyPhone(phoneNum) async {
-  //   // await FirebaseAuth.instance.verifyPhoneNumber(
-  //   //   phoneNumber: phoneNum,
-  //   // );
-  // }
 }

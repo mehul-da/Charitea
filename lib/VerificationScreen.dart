@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mdi/mdi.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class VerificationScreen extends StatefulWidget {
-  VerificationScreen({Key key, this.title}) : super(key: key);
+  VerificationScreen({Key key, this.title, @required this.phoneNum}) : super(key: key);
   final String title;
+  final String phoneNum;
 
   @override
   _VerificationScreenState createState() => _VerificationScreenState();
@@ -16,9 +18,9 @@ class _VerificationScreenState extends State<VerificationScreen> {
   var buttonColor = Color(0xFF8D8D8D);
   var textColor = Colors.black;
   var textEditingController = TextEditingController();
-  var maskTextInputFormatter = MaskTextInputFormatter(
-      mask: "######", filter: {"#": RegExp(r'[0-9]')});
-
+  var maskTextInputFormatter =
+      MaskTextInputFormatter(mask: "######", filter: {"#": RegExp(r'[0-9]')});
+  String code;
 
   void onCodeChange(String text) {
     if (text.length >= 6) {
@@ -113,7 +115,8 @@ class _VerificationScreenState extends State<VerificationScreen> {
                         color: buttonColor,
                         child: Text(
                           "CONTINUE",
-                          style: GoogleFonts.firaSans(fontSize: 20, color: textColor),
+                          style: GoogleFonts.firaSans(
+                              fontSize: 20, color: textColor),
                         ),
                       )),
                 ],
