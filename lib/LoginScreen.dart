@@ -13,11 +13,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  void goToNextScreen() {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => VerificationScreen()));
-  }
 
+  bool enabled = false;
+  var buttonColor = Color(0xFFD3D3D3);
+  
   final background = BoxDecoration(
     image: DecorationImage(
       image: AssetImage('images/loginScreen.jpg'),
@@ -31,22 +30,41 @@ class _LoginScreenState extends State<LoginScreen> {
   final phoneMessage = Text(
     "We will be sending you a code to verify your phone.",
     textAlign: TextAlign.center,
-    style: GoogleFonts.nanumGothic(fontSize: 19, color: Colors.black),
+    style: GoogleFonts.nanumGothic(fontSize: 18, color: Colors.black),
   );
 
   final mainTitle = Center(
       child: Text(
     "ENTER YOUR PHONE NUMBER",
     style: GoogleFonts.nanumGothic(
-        fontSize: 23, fontWeight: FontWeight.bold, color: Colors.black),
+        fontSize: 21, fontWeight: FontWeight.bold, color: Colors.black),
   ));
 
   var textEditingController = TextEditingController();
   var maskTextInputFormatter = MaskTextInputFormatter(
       mask: "(###) ###-####", filter: {"#": RegExp(r'[0-9]')});
 
+  void onPhoneChange(String text) {
+    if(text.length == 14) {
+      setState(() {enabled = true; buttonColor = Color(0xFF2eb092);});
+    } else {
+      setState(() {enabled = false; buttonColor = Color(0xFFD3D3D3);});
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+
+    var goToNextScreen;
+    if (enabled) {
+      goToNextScreen = () {
+        Navigator.push(
+        context, MaterialPageRoute(builder: (context) => VerificationScreen()));
+      };
+    }
+
+    // "${textEditingController.text.substring(1, 4)}${textEditingController.text.substring(6, 9)}${textEditingController.text.substring(10, 14)}"
+
     return Scaffold(
         resizeToAvoidBottomPadding: true,
         resizeToAvoidBottomInset: true,
@@ -72,6 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       controller: textEditingController,
                       inputFormatters: [maskTextInputFormatter],
                       autocorrect: false,
+                      onChanged: (text) => onPhoneChange(text),
                       keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
                           hintText: "Phone Number",
@@ -92,11 +111,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         borderRadius: BorderRadius.circular(21)),
                     padding: const EdgeInsets.only(
                         top: 17, bottom: 17, left: 30, right: 30),
-                    onPressed: () => {
-                      print(
-                          "${textEditingController.text.substring(1, 4)}${textEditingController.text.substring(6, 9)}${textEditingController.text.substring(10, 14)}")
-                    },
-                    color: Color(0xFF2eb092),
+                    onPressed: goToNextScreen,
+                    color: buttonColor,
                     textColor: Colors.white,
                     child: Text(
                       "CONTINUE",
