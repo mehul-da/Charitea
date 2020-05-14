@@ -38,11 +38,11 @@ class _OpeningScreenState extends State<OpeningScreen> {
         child: Center(
           child: ListView(
             children: <Widget>[
-              SizedBox(height: 50),
+              SizedBox(height: 40),
               Center(child: Icon(Mdi.handHeart, size: 125)),
               Center(child: Text("charitea", style: GoogleFonts.pangolin(fontSize: 70, fontWeight: FontWeight.bold,color: Color(0xFF2eb092)))),
               Padding(
-                  padding: const EdgeInsets.only(top: 225),
+                  padding: const EdgeInsets.only(top: 235),
                   child: RaisedButton(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(21)),

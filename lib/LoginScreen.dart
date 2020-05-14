@@ -13,10 +13,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
   bool enabled = false;
   var buttonColor = Color(0xFFD3D3D3);
-  
+
   final background = BoxDecoration(
     image: DecorationImage(
       image: AssetImage('images/loginScreen.jpg'),
@@ -45,21 +44,26 @@ class _LoginScreenState extends State<LoginScreen> {
       mask: "(###) ###-####", filter: {"#": RegExp(r'[0-9]')});
 
   void onPhoneChange(String text) {
-    if(text.length == 14) {
-      setState(() {enabled = true; buttonColor = Color(0xFF2eb092);});
+    if (text.length >= 14) {
+      setState(() {
+        enabled = true;
+        buttonColor = Color(0xFF2eb092);
+      });
     } else {
-      setState(() {enabled = false; buttonColor = Color(0xFFD3D3D3);});
+      setState(() {
+        enabled = false;
+        buttonColor = Color(0xFFD3D3D3);
+      });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-
     var goToNextScreen;
     if (enabled) {
       goToNextScreen = () {
-        Navigator.push(
-        context, MaterialPageRoute(builder: (context) => VerificationScreen()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => VerificationScreen()));
       };
     }
 
@@ -90,9 +94,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       controller: textEditingController,
                       inputFormatters: [maskTextInputFormatter],
                       autocorrect: false,
+                      maxLength: 14,
                       onChanged: (text) => onPhoneChange(text),
                       keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
+                          counterText: "",
                           hintText: "Phone Number",
                           hintStyle: GoogleFonts.nanumGothic(
                               fontSize: 20, fontWeight: FontWeight.bold),
