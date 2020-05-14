@@ -34,7 +34,7 @@ class _OpeningScreenState extends State<OpeningScreen> {
           height: MediaQuery.of(context).size.height,
           alignment: Alignment.topCenter,
           decoration: background,
-          padding: EdgeInsets.all(25.0),
+          padding: EdgeInsets.all(23.0),
         child: Center(
           child: ListView(
             children: <Widget>[

@@ -71,24 +71,24 @@ class _LoginScreenState extends State<LoginScreen> {
     // "${textEditingController.text.substring(1, 4)}${textEditingController.text.substring(6, 9)}${textEditingController.text.substring(10, 14)}"
 
     return Scaffold(
-        resizeToAvoidBottomPadding: true,
-        resizeToAvoidBottomInset: true,
+        resizeToAvoidBottomPadding: false,
+        resizeToAvoidBottomInset: false,
         body: SingleChildScrollView(
           child: Container(
             height: MediaQuery.of(context).size.height,
             alignment: Alignment.topCenter,
             decoration: background,
-            padding: EdgeInsets.all(25.0),
+            padding: EdgeInsets.all(23.0),
             child: Center(
               child: ListView(
                 shrinkWrap: true,
                 children: <Widget>[
-                  Center(child: Icon(Mdi.phone, size: 100)),
-                  SizedBox(height: 20),
+                  Center(child: Icon(Mdi.phone, size: 85)),
+                  SizedBox(height: 18),
                   mainTitle,
-                  SizedBox(height: 20),
+                  SizedBox(height: 18),
                   phoneMessage,
-                  SizedBox(height: 30),
+                  SizedBox(height: 25),
                   TextField(
                       style: GoogleFonts.nanumGothic(
                           fontSize: 20, fontWeight: FontWeight.bold),
@@ -113,19 +113,22 @@ class _LoginScreenState extends State<LoginScreen> {
                           prefixIcon: Icon(Mdi.cellphone,
                               color: Colors.black, size: 20))),
                   SizedBox(height: 30),
-                  RaisedButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(21)),
-                    padding: const EdgeInsets.only(
-                        top: 17, bottom: 17, left: 30, right: 30),
-                    onPressed: goToNextScreen,
-                    color: buttonColor,
-                    textColor: Colors.white,
-                    child: Text(
-                      "CONTINUE",
-                      style: GoogleFonts.firaSans(fontSize: 20),
-                    ),
-                  ),
+                  Padding(
+                      padding: EdgeInsets.only(
+                          bottom: MediaQuery.of(context).viewInsets.bottom),
+                      child: RaisedButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(21)),
+                        padding: const EdgeInsets.only(
+                            top: 17, bottom: 17, left: 30, right: 30),
+                        onPressed: goToNextScreen,
+                        color: buttonColor,
+                        textColor: Colors.white,
+                        child: Text(
+                          "CONTINUE",
+                          style: GoogleFonts.firaSans(fontSize: 20),
+                        ),
+                      )),
                 ],
               ),
             ),
@@ -134,8 +137,8 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<void> verifyPhone(phoneNum) async {
-    await FirebaseAuth.instance.verifyPhoneNumber(
-      phoneNumber: phoneNum,
-    );
+    // await FirebaseAuth.instance.verifyPhoneNumber(
+    //   phoneNumber: phoneNum,
+    // );
   }
 }
