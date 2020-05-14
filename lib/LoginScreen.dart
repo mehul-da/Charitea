@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import './VerificationScreen.dart';
@@ -130,5 +131,11 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
         ));
+  }
+
+  Future<void> verifyPhone(phoneNum) async {
+    await FirebaseAuth.instance.verifyPhoneNumber(
+      phoneNumber: phoneNum,
+    );
   }
 }
