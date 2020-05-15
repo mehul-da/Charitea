@@ -49,49 +49,52 @@ class _SearchTabState extends State<SearchTab> {
               alignment: Alignment.topCenter,
               decoration: background,
               padding: EdgeInsets.all(25.0),
-              child: ListView(
-                shrinkWrap: true,
+              child: Column(
                 children: <Widget>[
+                  SizedBox(height: 19),
                   mainTitle,
                   SizedBox(height: 20),
                   descriptionMessage,
                   SizedBox(height: 30),
                   Container(
-                      padding: const EdgeInsets.only(top: 8, bottom: 8, left: 10, right: 10),
+                      padding: const EdgeInsets.only(
+                          top: 7, bottom: 7, left: 10, right: 10),
                       decoration: BoxDecoration(
-                        color: Colors.white, 
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(15.0),
-                        border: Border.all(
-                            color: Colors.black,
-                            style: BorderStyle.solid),
+                        border:
+                            Border.all(style: BorderStyle.solid, width: 0.75),
                       ),
                       child: DropdownButton<String>(
                           value: dropdownValue,
                           underline: SizedBox(),
-                          hint: Text("Please choose an option."),
+                          hint: Text("Choose option."),
                           style: GoogleFonts.nanumGothic(
-                              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black),
                           onChanged: (String newValue) {
                             setState(() {
                               dropdownValue = newValue;
                             });
                           },
                           items: <String>[
-                            'Name',
+                            'Charity Name',
                             'Mission/Services',
                             'Items Accepted'
                           ].map<DropdownMenuItem<String>>((String value) {
                             return DropdownMenuItem<String>(
                               value: value,
-                              child: Text(value, style: GoogleFonts.nanumGothic(
-                              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),),
+                              child: Text(
+                                value,
+                                style: GoogleFonts.nanumGothic(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                              ),
                             );
                           }).toList())),
                   SizedBox(height: 18),
-                  Padding(padding: EdgeInsets.only(left: 8),
-                  child: Text("DETAILS", style: GoogleFonts.nanumGothic(
-                                    fontSize: 15))),
-                  SizedBox(height: 7),
                   Row(children: <Widget>[
                     Flexible(
                         child: TextField(
@@ -103,27 +106,32 @@ class _SearchTabState extends State<SearchTab> {
                             controller: missionController,
                             decoration: InputDecoration(
                                 counterText: "",
-                                hintText: "Mission/Services",
+                                hintText: "Information/Details",
                                 hintStyle: GoogleFonts.nanumGothic(
                                     fontSize: 20, fontWeight: FontWeight.bold),
                                 fillColor: Colors.white,
                                 filled: true,
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(15)),
+                                focusColor: Colors.black,
+                                hoverColor: Colors.black,
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(15)),
-                                prefixIcon: Icon(Mdi.officeBuilding,
+                                prefixIcon: Icon(Mdi.information,
                                     color: Colors.black, size: 20)))),
                     SizedBox(width: 10),
                     RaisedButton(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(21)),
-                      padding: const EdgeInsets.only(top: 20, bottom: 20),
+                      padding: const EdgeInsets.only(top: 15, bottom: 15),
                       color: Color(0xFF2eb092),
                       onPressed: () => {},
-                      child: Icon(Icons.search, size: 20),
+                      child: Icon(Icons.search, size: 30),
                     ),
                   ]),
+                  SizedBox(height: 15),
+                  Divider(color: Colors.black),
+                  SizedBox(height: 15,),
                 ],
               )),
         ));
