@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mdi/mdi.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:mdi/mdi.dart';
 
 class MainDashboardScreen extends StatefulWidget {
   MainDashboardScreen(
@@ -18,9 +19,14 @@ class MainDashboardScreen extends StatefulWidget {
 
 class _MainDashboardState extends State<MainDashboardScreen> {
   String uid;
+  int tabIndex = 0;
 
   _MainDashboardState(String uid) {
     this.uid = uid;
+  }
+
+  changeIndex(int index) {
+    setState(() {tabIndex = index;});
   }
 
   @override
@@ -35,18 +41,21 @@ class _MainDashboardState extends State<MainDashboardScreen> {
         bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Home'),
+            icon: Icon(Icons.search),
+            title: Text('Search'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            title: Text('Business'),
+            icon: Icon(Icons.location_city),
+            title: Text('Maps'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            title: Text('School'),
+            icon: Icon(Mdi.heart),
+            title: Text('Favorites'),
           ),
-        ],));
+        ],
+        currentIndex: tabIndex,
+        onTap: changeIndex,
+        selectedItemColor: Color(0xFF2eb092),));
         
   }
 }
