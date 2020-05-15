@@ -28,8 +28,14 @@ class _SearchTabState extends State<SearchTab> {
       child: Text(
     "CHARITY SEARCH",
     style: GoogleFonts.nanumGothic(
-        fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),
+        fontSize: 27, fontWeight: FontWeight.bold, color: Colors.black),
   ));
+
+  final descriptionMessage = Text(
+    "Search up a charity or non-profit organization either by name, the mission that they support or the type of donation they accept!",
+    textAlign: TextAlign.center,
+    style: GoogleFonts.nanumGothic(fontSize: 19, color: Colors.black),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -41,81 +47,86 @@ class _SearchTabState extends State<SearchTab> {
               height: MediaQuery.of(context).size.height,
               alignment: Alignment.topCenter,
               decoration: background,
-              padding: EdgeInsets.all(23.0),
+              padding: EdgeInsets.all(25.0),
               child: ListView(
                 shrinkWrap: true,
                 children: <Widget>[
-                  mainTitle, 
+                  mainTitle,
+                  SizedBox(height: 20),
+                  descriptionMessage,
                   SizedBox(height: 30),
-                  TextField(
-                      style: GoogleFonts.nanumGothic(
-                          fontSize: 20, fontWeight: FontWeight.bold),
-                      autocorrect: false,
-                      maxLength: 6,
-                      onChanged: (text) => {},
-                      controller: charityNameController,
-                      keyboardType: TextInputType.phone,
-                      decoration: InputDecoration(
-                          counterText: "",
-                          hintText: "Name of Organization",
-                          hintStyle: GoogleFonts.nanumGothic(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                          fillColor: Colors.white,
-                          filled: true,
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15)),
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15)),
-                          contentPadding: const EdgeInsets.all(16.0),
-                          prefixIcon: Icon(Mdi.officeBuilding,
-                              color: Colors.black, size: 20))),
-                  SizedBox(height: 18),
-                  Center(
-                      child: Text("-OR-",
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.nanumGothic(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black))),
-                  SizedBox(height: 18),
-                  TextField(
-                      style: GoogleFonts.nanumGothic(
-                          fontSize: 20, fontWeight: FontWeight.bold),
-                      autocorrect: false,
-                      maxLength: 6,
-                      onChanged: (text) => {},
-                      controller: missionController,
-                      keyboardType: TextInputType.phone,
-                      decoration: InputDecoration(
-                          counterText: "",
-                          hintText: "Mission of Organization",
-                          hintStyle: GoogleFonts.nanumGothic(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                          fillColor: Colors.white,
-                          filled: true,
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15)),
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15)),
-                          contentPadding: const EdgeInsets.all(16.0),
-                          prefixIcon: Icon(Mdi.officeBuilding,
-                              color: Colors.black, size: 20))),
-                  SizedBox(height: 30),
-                  Padding(
-                      padding: EdgeInsets.only(
-                          bottom: MediaQuery.of(context).viewInsets.bottom),
-                      child: RaisedButton(
+                  Row(
+                    children: <Widget>[
+                      Flexible(
+                        child: TextField(
+                            style: GoogleFonts.nanumGothic(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                            autocorrect: false,
+                            maxLength: 6,
+                            onChanged: (text) => {},
+                            controller: charityNameController,
+                            keyboardType: TextInputType.phone,
+                            decoration: InputDecoration(
+                                counterText: "",
+                                hintText: "Name",
+                                hintStyle: GoogleFonts.nanumGothic(
+                                    fontSize: 20, fontWeight: FontWeight.bold),
+                                fillColor: Colors.white,
+                                filled: true,
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15)),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15)),
+                                prefixIcon: Icon(Mdi.officeBuilding,
+                                    color: Colors.black, size: 20))),
+                      ),
+                      SizedBox(width: 10),
+                      RaisedButton(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(21)),
-                        padding: const EdgeInsets.only(
-                            top: 17, bottom: 17, left: 30, right: 30),
+                        padding: const EdgeInsets.only(top: 20, bottom: 20),
                         color: Color(0xFF2eb092),
                         onPressed: () => {},
-                        child: Text(
-                          "SEARCH",
-                          style: GoogleFonts.firaSans(fontSize: 20),
-                        ),
-                      )),
+                        child: Icon(Icons.search, size: 20),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  Divider(color: Colors.black),
+                  SizedBox(height: 10),
+                  Row(children: <Widget>[
+                    Flexible(
+                        child: TextField(
+                            style: GoogleFonts.nanumGothic(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                            autocorrect: false,
+                            maxLength: 6,
+                            onChanged: (text) => {},
+                            controller: missionController,
+                            keyboardType: TextInputType.phone,
+                            decoration: InputDecoration(
+                                counterText: "",
+                                hintText: "Mission/Services",
+                                hintStyle: GoogleFonts.nanumGothic(
+                                    fontSize: 20, fontWeight: FontWeight.bold),
+                                fillColor: Colors.white,
+                                filled: true,
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15)),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15)),
+                                prefixIcon: Icon(Mdi.officeBuilding,
+                                    color: Colors.black, size: 20)))),
+                    SizedBox(width: 10),
+                    RaisedButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(21)),
+                      padding: const EdgeInsets.only(top: 20, bottom: 20),
+                      color: Color(0xFF2eb092),
+                      onPressed: () => {},
+                      child: Icon(Icons.search, size: 20),
+                    ),
+                  ]),
                 ],
               )),
         ));
