@@ -4,6 +4,9 @@ import 'package:mdi/mdi.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mdi/mdi.dart';
+import './SearchTab.dart';
+import './MapsTab.dart';
+import './FavoritesTab.dart';
 
 class MainDashboardScreen extends StatefulWidget {
   MainDashboardScreen(
@@ -29,15 +32,22 @@ class _MainDashboardState extends State<MainDashboardScreen> {
     setState(() {tabIndex = index;});
   }
 
+  List<Widget> widgetsForEachTab = <Widget> [
+    SearchTab(),
+    MapsTab(),
+    FavoritesTab()
+
+  ];
+
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
         resizeToAvoidBottomPadding: false,
         resizeToAvoidBottomInset: false,
-        body: SingleChildScrollView(
-          child: Text("HELLO")
-        ),
+        body: Center(
+        child: widgetsForEachTab.elementAt(tabIndex),
+      ),
         bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -56,6 +66,5 @@ class _MainDashboardState extends State<MainDashboardScreen> {
         currentIndex: tabIndex,
         onTap: changeIndex,
         selectedItemColor: Color(0xFF2eb092),));
-        
   }
 }
