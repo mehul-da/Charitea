@@ -14,12 +14,22 @@ class SearchTab extends StatefulWidget {
 }
 
 class _SearchTabState extends State<SearchTab> {
+  var charityNameController = new TextEditingController();
+  var missionController = new TextEditingController();
+
   final background = BoxDecoration(
     image: DecorationImage(
       image: AssetImage('images/tabBackground.jpg'),
       fit: BoxFit.cover,
     ),
   );
+
+  final mainTitle = Center(
+      child: Text(
+    "CHARITY SEARCH",
+    style: GoogleFonts.nanumGothic(
+        fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),
+  ));
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +42,65 @@ class _SearchTabState extends State<SearchTab> {
               alignment: Alignment.topCenter,
               decoration: background,
               padding: EdgeInsets.all(23.0),
-              child: Center(
-                  child: ListView(
+              child: ListView(
                 shrinkWrap: true,
                 children: <Widget>[
+                  mainTitle, 
+                  SizedBox(height: 30),
+                  TextField(
+                      style: GoogleFonts.nanumGothic(
+                          fontSize: 20, fontWeight: FontWeight.bold),
+                      autocorrect: false,
+                      maxLength: 6,
+                      onChanged: (text) => {},
+                      controller: charityNameController,
+                      keyboardType: TextInputType.phone,
+                      decoration: InputDecoration(
+                          counterText: "",
+                          hintText: "Name of Organization",
+                          hintStyle: GoogleFonts.nanumGothic(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                          fillColor: Colors.white,
+                          filled: true,
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15)),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15)),
+                          contentPadding: const EdgeInsets.all(16.0),
+                          prefixIcon: Icon(Mdi.officeBuilding,
+                              color: Colors.black, size: 20))),
+                  SizedBox(height: 18),
+                  Center(
+                      child: Text("-OR-",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.nanumGothic(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black))),
+                  SizedBox(height: 18),
+                  TextField(
+                      style: GoogleFonts.nanumGothic(
+                          fontSize: 20, fontWeight: FontWeight.bold),
+                      autocorrect: false,
+                      maxLength: 6,
+                      onChanged: (text) => {},
+                      controller: missionController,
+                      keyboardType: TextInputType.phone,
+                      decoration: InputDecoration(
+                          counterText: "",
+                          hintText: "Mission of Organization",
+                          hintStyle: GoogleFonts.nanumGothic(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                          fillColor: Colors.white,
+                          filled: true,
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15)),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15)),
+                          contentPadding: const EdgeInsets.all(16.0),
+                          prefixIcon: Icon(Mdi.officeBuilding,
+                              color: Colors.black, size: 20))),
+                  SizedBox(height: 30),
                   Padding(
                       padding: EdgeInsets.only(
                           bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -47,12 +112,12 @@ class _SearchTabState extends State<SearchTab> {
                         color: Color(0xFF2eb092),
                         onPressed: () => {},
                         child: Text(
-                          "CONTINUE",
+                          "SEARCH",
                           style: GoogleFonts.firaSans(fontSize: 20),
                         ),
                       )),
                 ],
-              ))),
+              )),
         ));
   }
 }
