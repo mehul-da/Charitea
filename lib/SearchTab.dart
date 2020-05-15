@@ -16,6 +16,7 @@ class SearchTab extends StatefulWidget {
 class _SearchTabState extends State<SearchTab> {
   var charityNameController = new TextEditingController();
   var missionController = new TextEditingController();
+  String dropdownValue;
 
   final background = BoxDecoration(
     image: DecorationImage(
@@ -55,45 +56,42 @@ class _SearchTabState extends State<SearchTab> {
                   SizedBox(height: 20),
                   descriptionMessage,
                   SizedBox(height: 30),
-                  Row(
-                    children: <Widget>[
-                      Flexible(
-                        child: TextField(
-                            style: GoogleFonts.nanumGothic(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                            autocorrect: false,
-                            maxLength: 6,
-                            onChanged: (text) => {},
-                            controller: charityNameController,
-                            keyboardType: TextInputType.phone,
-                            decoration: InputDecoration(
-                                counterText: "",
-                                hintText: "Name",
-                                hintStyle: GoogleFonts.nanumGothic(
-                                    fontSize: 20, fontWeight: FontWeight.bold),
-                                fillColor: Colors.white,
-                                filled: true,
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(15)),
-                                focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(15)),
-                                prefixIcon: Icon(Mdi.officeBuilding,
-                                    color: Colors.black, size: 20))),
+                  Container(
+                      padding: const EdgeInsets.only(top: 8, bottom: 8, left: 10, right: 10),
+                      decoration: BoxDecoration(
+                        color: Colors.white, 
+                        borderRadius: BorderRadius.circular(15.0),
+                        border: Border.all(
+                            color: Colors.black,
+                            style: BorderStyle.solid),
                       ),
-                      SizedBox(width: 10),
-                      RaisedButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(21)),
-                        padding: const EdgeInsets.only(top: 20, bottom: 20),
-                        color: Color(0xFF2eb092),
-                        onPressed: () => {},
-                        child: Icon(Icons.search, size: 20),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 10),
-                  Divider(color: Colors.black),
-                  SizedBox(height: 10),
+                      child: DropdownButton<String>(
+                          value: dropdownValue,
+                          underline: SizedBox(),
+                          hint: Text("Please choose an option."),
+                          style: GoogleFonts.nanumGothic(
+                              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+                          onChanged: (String newValue) {
+                            setState(() {
+                              dropdownValue = newValue;
+                            });
+                          },
+                          items: <String>[
+                            'Name',
+                            'Mission/Services',
+                            'Items Accepted'
+                          ].map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value, style: GoogleFonts.nanumGothic(
+                              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),),
+                            );
+                          }).toList())),
+                  SizedBox(height: 18),
+                  Padding(padding: EdgeInsets.only(left: 8),
+                  child: Text("DETAILS", style: GoogleFonts.nanumGothic(
+                                    fontSize: 15))),
+                  SizedBox(height: 7),
                   Row(children: <Widget>[
                     Flexible(
                         child: TextField(
@@ -103,7 +101,6 @@ class _SearchTabState extends State<SearchTab> {
                             maxLength: 6,
                             onChanged: (text) => {},
                             controller: missionController,
-                            keyboardType: TextInputType.phone,
                             decoration: InputDecoration(
                                 counterText: "",
                                 hintText: "Mission/Services",
