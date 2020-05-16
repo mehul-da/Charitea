@@ -101,7 +101,7 @@ class _SearchTabState extends State<SearchTab> {
                             style: GoogleFonts.nanumGothic(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                             autocorrect: false,
-                            maxLength: 6,
+                            maxLength: 60,
                             onChanged: (text) => {},
                             controller: missionController,
                             decoration: InputDecoration(
