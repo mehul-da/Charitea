@@ -55,7 +55,7 @@ class _MainDashboardState extends State<MainDashboardScreen> {
             title: Text('Search'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.location_city),
+            icon: Icon(Icons.location_on),
             title: Text('Maps'),
           ),
           BottomNavigationBarItem(

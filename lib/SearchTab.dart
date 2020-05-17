@@ -27,13 +27,13 @@ class _SearchTabState extends State<SearchTab> {
 
   final mainTitle = Center(
       child: Text(
-    "CHARITY SEARCH",
+    "SEARCH",
     style: GoogleFonts.nanumGothic(
-        fontSize: 27, fontWeight: FontWeight.bold, color: Colors.black),
+        fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black),
   ));
 
   final descriptionMessage = Text(
-    "Search up a charity or non-profit organization either by name, the mission that they support or the type of donation they accept!",
+    "Search up a charity, non-profit organization or donation event by name, the mission that they support or the type of donation they accept!",
     textAlign: TextAlign.center,
     style: GoogleFonts.nanumGothic(fontSize: 19, color: Colors.black),
   );
@@ -68,7 +68,7 @@ class _SearchTabState extends State<SearchTab> {
                       child: DropdownButton<String>(
                           value: dropdownValue,
                           underline: SizedBox(),
-                          hint: Text("Choose option."),
+                          hint: Text("Choose an option"),
                           style: GoogleFonts.nanumGothic(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
@@ -79,7 +79,7 @@ class _SearchTabState extends State<SearchTab> {
                             });
                           },
                           items: <String>[
-                            'Charity Name',
+                            'Charity/Event Name',
                             'Mission/Services',
                             'Items Accepted'
                           ].map<DropdownMenuItem<String>>((String value) {
