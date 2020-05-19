@@ -7,6 +7,7 @@ import 'package:mdi/mdi.dart';
 import './SearchTab.dart';
 import './MapsTab.dart';
 import './FavoritesTab.dart';
+import './NewEvent.dart';
 
 class MainDashboardScreen extends StatefulWidget {
   MainDashboardScreen(
@@ -35,6 +36,7 @@ class _MainDashboardState extends State<MainDashboardScreen> {
   List<Widget> widgetsForEachTab = <Widget> [
     SearchTab(),
     MapsTab(),
+    NewEventTab(),
     FavoritesTab()
 
   ];
@@ -57,6 +59,10 @@ class _MainDashboardState extends State<MainDashboardScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.location_on),
             title: Text('Maps'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Mdi.plus),
+            title: Text('Add Event'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Mdi.heart),
