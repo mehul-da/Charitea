@@ -6,7 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mdi/mdi.dart';
 import './SearchTab.dart';
 import './MapsTab.dart';
-import './FavoritesTab.dart';
+import './PersonalInfoTab.dart';
 import './NewEvent.dart';
 
 class MainDashboardScreen extends StatefulWidget {
@@ -37,7 +37,7 @@ class _MainDashboardState extends State<MainDashboardScreen> {
     SearchTab(),
     MapsTab(),
     NewEventTab(),
-    FavoritesTab()
+    PersonalInfoTab()
   ];
 
   @override

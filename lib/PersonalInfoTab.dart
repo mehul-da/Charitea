@@ -5,15 +5,15 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mdi/mdi.dart';
 
-class FavoritesTab extends StatefulWidget {
-  FavoritesTab({Key key, this.title}) : super(key: key);
+class PersonalInfoTab extends StatefulWidget {
+  PersonalInfoTab({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
-  _FavoritesTabState createState() => _FavoritesTabState();
+  _PersonalInfoTabState createState() => _PersonalInfoTabState();
 }
 
-class _FavoritesTabState extends State<FavoritesTab> {
+class _PersonalInfoTabState extends State<PersonalInfoTab> {
   final background = BoxDecoration(
     image: DecorationImage(
       image: AssetImage('images/tabBackground.jpg'),
