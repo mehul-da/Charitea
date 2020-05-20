@@ -10,15 +10,13 @@ import './FavoritesTab.dart';
 import './NewEvent.dart';
 
 class MainDashboardScreen extends StatefulWidget {
-  MainDashboardScreen(
-      {Key key, this.title, @required this.userUID})
+  MainDashboardScreen({Key key, this.title, @required this.userUID})
       : super(key: key);
   final String title;
   final String userUID;
 
   @override
-  _MainDashboardState createState() =>
-      _MainDashboardState(this.userUID);
+  _MainDashboardState createState() => _MainDashboardState(this.userUID);
 }
 
 class _MainDashboardState extends State<MainDashboardScreen> {
@@ -30,47 +28,51 @@ class _MainDashboardState extends State<MainDashboardScreen> {
   }
 
   changeIndex(int index) {
-    setState(() {tabIndex = index;});
+    setState(() {
+      tabIndex = index;
+    });
   }
 
-  List<Widget> widgetsForEachTab = <Widget> [
+  List<Widget> widgetsForEachTab = <Widget>[
     SearchTab(),
     MapsTab(),
     NewEventTab(),
     FavoritesTab()
-
   ];
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
         resizeToAvoidBottomPadding: false,
         resizeToAvoidBottomInset: false,
         body: Center(
-        child: widgetsForEachTab.elementAt(tabIndex),
-      ),
+          child: widgetsForEachTab.elementAt(tabIndex),
+        ),
         bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            title: Text('Search'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.location_on),
-            title: Text('Maps'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Mdi.plus),
-            title: Text('Add Event'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Mdi.heart),
-            title: Text('Favorites'),
-          ),
-        ],
-        currentIndex: tabIndex,
-        onTap: changeIndex,
-        selectedItemColor: Color(0xFF2eb092),));
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              title: Text(''),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.location_on),
+              title: Text(''),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Mdi.plus),
+              title: Text(''),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Mdi.heart),
+              title: Text(''),
+            ),
+          ],
+          currentIndex: tabIndex,
+          onTap: changeIndex,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          unselectedItemColor: Colors.black,
+          selectedItemColor: Color(0xFF2eb092),
+        ));
   }
 }
