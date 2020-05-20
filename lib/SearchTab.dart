@@ -17,6 +17,7 @@ class _SearchTabState extends State<SearchTab> {
   var charityNameController = new TextEditingController();
   var missionController = new TextEditingController();
   String dropdownValue;
+  bool showNextInput = false;
 
   final background = BoxDecoration(
     image: DecorationImage(
@@ -40,6 +41,47 @@ class _SearchTabState extends State<SearchTab> {
 
   @override
   Widget build(BuildContext context) {
+    var nextInput;
+
+    if (showNextInput) {
+      nextInput = Row(children: <Widget>[
+        Flexible(
+            child: TextField(
+                style: GoogleFonts.nanumGothic(
+                    fontSize: 20, fontWeight: FontWeight.bold),
+                autocorrect: false,
+                maxLength: 60,
+                onChanged: (text) => {},
+                controller: missionController,
+                decoration: InputDecoration(
+                    counterText: "",
+                    hintText: "Information/Details",
+                    hintStyle: GoogleFonts.nanumGothic(
+                        fontSize: 20, fontWeight: FontWeight.bold),
+                    fillColor: Colors.white,
+                    filled: true,
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    focusColor: Colors.black,
+                    hoverColor: Colors.black,
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    prefixIcon:
+                        Icon(Mdi.information, color: Colors.black, size: 20)))),
+        SizedBox(width: 10),
+        RaisedButton(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(21)),
+          padding: const EdgeInsets.only(top: 15, bottom: 15),
+          color: Color(0xFF2eb092),
+          onPressed: () => {},
+          child: Icon(Icons.search, size: 30),
+        ),
+      ]);
+    } else {
+      nextInput = SizedBox(height: 0);
+    }
+
     return Scaffold(
         resizeToAvoidBottomPadding: false,
         resizeToAvoidBottomInset: false,
@@ -76,6 +118,7 @@ class _SearchTabState extends State<SearchTab> {
                           onChanged: (String newValue) {
                             setState(() {
                               dropdownValue = newValue;
+                              showNextInput = true;
                             });
                           },
                           items: <String>[
@@ -95,43 +138,12 @@ class _SearchTabState extends State<SearchTab> {
                             );
                           }).toList())),
                   SizedBox(height: 18),
-                  Row(children: <Widget>[
-                    Flexible(
-                        child: TextField(
-                            style: GoogleFonts.nanumGothic(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                            autocorrect: false,
-                            maxLength: 60,
-                            onChanged: (text) => {},
-                            controller: missionController,
-                            decoration: InputDecoration(
-                                counterText: "",
-                                hintText: "Information/Details",
-                                hintStyle: GoogleFonts.nanumGothic(
-                                    fontSize: 20, fontWeight: FontWeight.bold),
-                                fillColor: Colors.white,
-                                filled: true,
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(15)),
-                                focusColor: Colors.black,
-                                hoverColor: Colors.black,
-                                focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(15)),
-                                prefixIcon: Icon(Mdi.information,
-                                    color: Colors.black, size: 20)))),
-                    SizedBox(width: 10),
-                    RaisedButton(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(21)),
-                      padding: const EdgeInsets.only(top: 15, bottom: 15),
-                      color: Color(0xFF2eb092),
-                      onPressed: () => {},
-                      child: Icon(Icons.search, size: 30),
-                    ),
-                  ]),
+                  nextInput,
                   SizedBox(height: 15),
                   Divider(color: Colors.black),
-                  SizedBox(height: 15,),
+                  SizedBox(
+                    height: 15,
+                  ),
                 ],
               )),
         ));
