@@ -4,6 +4,7 @@ import 'package:mdi/mdi.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mdi/mdi.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapsTab extends StatefulWidget {
   MapsTab({Key key, this.title}) : super(key: key);
@@ -21,18 +22,32 @@ class _MapsTabState extends State<MapsTab> {
     ),
   );
 
+  GoogleMapController mapController;
+
+  final LatLng _center = const LatLng(45.521563, -122.677433);
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
-      resizeToAvoidBottomInset: false,
-      body: SingleChildScrollView(
-        child: Container(
+        resizeToAvoidBottomPadding: false,
+        resizeToAvoidBottomInset: false,
+        body: SingleChildScrollView(
+          child: Container(
             height: MediaQuery.of(context).size.height,
             alignment: Alignment.topCenter,
             decoration: background,
-            child: Text("MAPS TAB!")),
-      ),
-    );
+            child: GoogleMap(
+              onMapCreated: _onMapCreated,
+              initialCameraPosition: CameraPosition(
+                target: _center,
+                zoom: 11.0,
+              ),
+            ),
+          ),
+        ));
   }
 }
