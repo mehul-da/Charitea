@@ -24,10 +24,7 @@ dependencies:
   mask_text_input_formatter: ^1.0.6
   firebase_core: ^0.4.0+9
   firebase_auth: ^0.14.0+5
-
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
+  google_maps_flutter: ^0.4.0
   cupertino_icons: ^0.1.2
   
 
